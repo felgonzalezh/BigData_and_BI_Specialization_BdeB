@@ -1,0 +1,3 @@
+ÉmissionA	5193476
+ÉmissionB	3723973
+ÉmissionC	1032800

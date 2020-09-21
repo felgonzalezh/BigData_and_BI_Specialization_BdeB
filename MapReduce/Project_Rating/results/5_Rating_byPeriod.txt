@@ -1,0 +1,5 @@
+Automne	3171992
+Fêtes	687528
+Hiver	2515718
+Printemps	923707
+Été	2651304

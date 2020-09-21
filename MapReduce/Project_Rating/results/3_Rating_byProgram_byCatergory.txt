@@ -1,0 +1,7 @@
+ÉmissionA-complet	2068476
+ÉmissionA-hybride	85134
+ÉmissionA-partie	3039866
+ÉmissionB-complet	3653545
+ÉmissionB-hybride	7412
+ÉmissionB-partie	63016
+ÉmissionC-complet	1032800
