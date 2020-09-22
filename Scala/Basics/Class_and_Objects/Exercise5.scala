@@ -1,0 +1,60 @@
+object Exercise5 extends App{
+  //On veut modéliser une date (mois, jour et année)
+
+  // Développer une classe case qui permet de créer un objet de type Date.
+  class Date(mm:Int, jj:Int, aaaa:Int){
+    override def toString: String = _annee + "/" + _mois + "/" + _jour
+    var _annee = aaaa
+    def moisvalide(mm: Int):Int = {
+      if(mm > 12 || mm < 1) {
+        1
+      }else {
+        mm
+      }
+    }
+    var _mois = moisvalide(mm)
+
+    def jourvalide(jj: Int):Int = {
+      if(jj > 31 || jj < 1) {
+        1
+      }else {
+        jj
+      }
+    }
+    var _jour = jourvalide(jj)
+  }
+  // Faire en sorte que l'information est immuable.
+  // Procéder à la création d'un objet de type Date.
+  var date1 = new Date(15, 33, 2010)
+  println(date1)
+  // Essayer de changer les composantes de la date. Qu'est ce que vous constatez?
+  // date1 = Date(3,6,2011) // It is not possible. Object is inmutable
+  //println(date1)
+
+  // Modifier la déclaration de la classe afin que l'on ait maintenant une classe mutable
+  case class Date_v1(jj:Int, mm:Int, aaaa:Int) // Data inmutable
+  var date2 = Date_v1(3,6,2011)
+  println(date2)
+  //date2 = Date(9,11,2015)
+  //println(date2)
+  //var date1 = Date(08,06,1984)
+
+
+  class Date_ver2(var mm:Int, var jj:Int, var aaaa:Int){
+    override def toString: String = aaaa.toString + "," + mm.toString + "," + jj.toString
+
+    if(mm > 12){
+      println("Month Max value is 12")
+    }else if(jj > 31){
+      println("Day Max value is 31")
+    }else if(aaaa < 0){
+      println("Year must be AC")
+    }else{
+      println(aaaa.toString + "," + mm.toString + "," + jj.toString)
+    }
+  }
+  var date_v1 = new Date_ver2(5,32,2015)
+  println(date_v1)
+
+
+}
