@@ -10,6 +10,8 @@ Hadoop, MapReduce, HIVE, Scala
 BD5: Intelligence d’affaires et gestion des entrepôts de données (BI et Data Warehouse):
 SQL, MSBI: SSIS, SSAS, VisualStudio
 
+BD4: Acquisition, ingestion et gestion des données (ETL)
+Python, 
 
 
 
