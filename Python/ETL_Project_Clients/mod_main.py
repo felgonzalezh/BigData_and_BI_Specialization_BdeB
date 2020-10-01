@@ -16,8 +16,13 @@ def main():
             listing = Registre_Client()
             etl = Extraction(file_in)
             if file_format == "csv":
+                print("-" * 100)
                 etl.reading_csv(file,listing)
-                print("=" * 50)
+                print("-" * 100)
+            if file_format == "json":
+                print("-" * 100)
+                etl.reading_json(file, listing)
+                print("-" * 100)
             else:
                 print("Unknown format")
             listing.print_client()
