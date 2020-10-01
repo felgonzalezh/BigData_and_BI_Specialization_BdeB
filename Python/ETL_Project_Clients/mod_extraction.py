@@ -1,15 +1,20 @@
-# This class will extract data for each file according to its format (csv, json, sql)
-# It will return a  list of objects
-# This way, we got scalability since we can include different file formats like excel, APIS, websites.. etc
+#Extraction module.
+# It takes a file and returns a list of Client objects
+import json
+from mod_classes import Client
 
 class Extraction:
-    pass
+    def __init__(self, data_config):
+        self.etl_data = json.load(open(data_config))
+        self.etl_data_sources = self.etl_data["data_sources"]
+        self.csv_path = self.etl_data["data_sources"]["csv"]
 
-    def reading_csv(self):
-        pass
+    def reading_csv(self, csv_file, data_list):
+        with open(self.csv_path[csv_file]) as fin_csv:
+            print("{} file has been opened".format(self.csv_path[csv_file]))
+            for line in fin_csv.readlines():
+                attribute = line.split(",")
+                client = Client(attribute[0],attribute[2],attribute[1],attribute[3],attribute[4],
+                   attribute[5])
+                data_list.add_client(client)
 
-    def reading_json(self):
-        pass
-
-    def reading_sql(self):
-        pass
