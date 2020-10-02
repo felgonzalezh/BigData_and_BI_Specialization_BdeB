@@ -2,6 +2,9 @@
 
 from mod_classes import Registre_Client
 from mod_extraction import Extraction
+from mod_load import Load
+from mod_transformation import Transformation
+
 
 def main():
 
@@ -12,20 +15,34 @@ def main():
     for file_format, data_set in etl.etl_data["data_sources"].items():
         # Loop over files. We pass the key to get the file
         for file in data_set:
+            print("="*50)
+            print("Extraction: {} files".format(file_format))
             # Extraction
             listing = Registre_Client()
-            etl = Extraction(file_in)
             if file_format == "csv":
                 print("-" * 100)
                 etl.reading_csv(file,listing)
                 print("-" * 100)
-            if file_format == "json":
+            elif file_format == "json":
                 print("-" * 100)
                 etl.reading_json(file, listing)
                 print("-" * 100)
+            #if file_format == "sql":
+            #    print("-" * 100)
+            #    etl.reading_sql(file, listing)
+            #    print("-" * 100)
             else:
+                print("-" * 100)
                 print("Unknown format")
-            listing.print_client()
+                print("-" * 100)
+            # Transformation
+
+            Transformation(listing).genre()
+            #listing.print_client()
+
+            # Loading
+            Loading = Load("data_out.csv",listing)
+            Loading.writing_data()
 
 
 
