@@ -1,4 +1,7 @@
 # module pour lancer le procesus ETL
+import pymysql
+
+from mod_bd import inserer_tab_article, creer_table_chargement
 from mod_classes import Article, Registre_Article
 from mod_fichier import lire_data, ecrire_data
 from mod_transformation import modifier_description, donner_rabais
@@ -25,8 +28,16 @@ def main():
     listing.afficher_article()
     print("=" * 50)
     #Chargement
+    # Chargement dans fichier
     ecrire_data("data_out.csv",listing)
+    #Chargement dans table (bd sql)
+    creer_table_chargement()
+    inserer_tab_article(listing)
+
     print("Chargement termine")
     print("=" * 50)
+
+
+
 if __name__ == '__main__':
     main()
