@@ -6,7 +6,7 @@ def modifier_description(listo):
 def donner_rabais(listo, qte_min, rabais):
     for elem in listo.registre:
         if elem.quantite < qte_min:
-            elem.prix = elem.prix*(1 - rabais*0.01)
+            elem.prix = round(elem.prix*(1 - rabais*0.01), 2)
 
 
 
