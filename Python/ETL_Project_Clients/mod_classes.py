@@ -19,7 +19,7 @@ class Registre_Client:
         self.registre = []
 
     def add_client(self, client):
-        self.registre.append(client)
+        self.registre.append(client) # Improve: Must be added if it does not exist!
 
     def print_client(self):
         for elem in self.registre:

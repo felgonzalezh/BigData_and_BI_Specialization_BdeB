@@ -43,7 +43,7 @@ class Extraction:
                 genre = ""
             client = Client(id, prenom, nom, email, genre, ville)
             data_list.add_client(client)
-            print("{} data has been extracted".format(self.json_path[json_file]))
+        print("{} data has been extracted".format(self.json_path[json_file]))
 
 class Load_into_file:
     # Loading into a csv file
