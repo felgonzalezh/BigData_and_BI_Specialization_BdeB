@@ -31,7 +31,7 @@ class Load_into_bd:
     def get_connection(self):
         connexion = pymysql.connect(host="localhost",
                                user="root",
-                               passwd="HDUSER",
+                               passwd="",
                                db="northwindmysql",
                                cursorclass=pymysql.cursors.DictCursor)
         return connexion
