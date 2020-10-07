@@ -45,7 +45,9 @@ def main():
 
             if flag:
                 print("Transformation")
-                Transformation(listing).genre()
+                transform = Transformation(listing)
+                transform.genre()
+                transform.filling_gender()
 
             #listing.print_client()
 
