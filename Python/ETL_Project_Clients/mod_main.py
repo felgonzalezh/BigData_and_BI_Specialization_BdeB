@@ -2,7 +2,7 @@
 
 from mod_classes import Registre_Client
 from mod_extraction import Extraction
-from mod_load import Load
+from mod_load import Load_into_file, Load_into_bd
 from mod_transformation import Transformation
 
 
@@ -19,32 +19,46 @@ def main():
             print("Extraction: {} files".format(file_format))
             # Extraction
             listing = Registre_Client()
+            flag = False
             if file_format == "csv":
-                print("-" * 100)
+                print("-" * 50)
                 etl.reading_csv(file,listing)
-                print("-" * 100)
+                print("-" * 50)
+                flag = True
             elif file_format == "json":
-                print("-" * 100)
+                print("-" * 50)
                 etl.reading_json(file, listing)
-                print("-" * 100)
+                print("-" * 50)
+                flag = True
             #if file_format == "sql":
             #    print("-" * 100)
             #    etl.reading_sql(file, listing)
             #    print("-" * 100)
+            #    flag = True
             else:
-                print("-" * 100)
+                print("-" * 50)
                 print("Unknown format")
-                print("-" * 100)
+                print("-" * 50)
+                flag = False
+
             # Transformation
 
-            Transformation(listing).genre()
+            if flag:
+                print("Transformation")
+                Transformation(listing).genre()
+
             #listing.print_client()
 
-            # Loading
-            Loading = Load("data_out.csv",listing)
-            Loading.writing_data()
+            # Loading into file
+                print("-" * 50)
+                print("Load {} files data".format(file_format))
+                Loading_file = Load_into_file("data_out.csv",listing)
+                Loading_file.writing_data_into_file()
 
-
+            # Loading into db
+                Loading_db = Load_into_bd(listing)
+                Loading_db.create_table_loading()
+                Loading_db.insert_elements_table()
 
 if __name__ == '__main__':
     main()
