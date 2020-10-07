@@ -1,0 +1,13 @@
+{
+	"data_sources": {
+		"csv": {
+			"file1": "datasources/week_cust.csv"
+		},
+		"json": {
+			"file1": "datasources/cust_data.json"
+		},
+		"sql": {
+			"table1": "client_DATA"
+		}
+	}
+}
